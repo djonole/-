@@ -1,0 +1,151 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">java.util.Scanner</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">Main {</span>
+    <span class="s0">public static void </span><span class="s1">main(String[] args) {</span>
+
+        <span class="s1">Scanner s = </span><span class="s0">new </span><span class="s1">Scanner(System.in)</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s2">&quot;Ввод: &quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">String vvod = s.nextLine()</span><span class="s0">;</span>
+        <span class="s1">System.out.print(</span><span class="s2">&quot;Результат: &quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s1">String operStr = </span><span class="s2">&quot; &quot;</span><span class="s0">;</span>
+        <span class="s0">char</span><span class="s1">[] symbol = </span><span class="s0">new char</span><span class="s1">[</span><span class="s3">10</span><span class="s1">]</span><span class="s0">;</span>
+        <span class="s0">char </span><span class="s1">oper = </span><span class="s2">'+'</span><span class="s0">;</span>
+        <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i=</span><span class="s3">1</span><span class="s0">; </span><span class="s1">i &lt; vvod.length()</span><span class="s0">; </span><span class="s1">i++) {</span>
+            <span class="s1">symbol[i] = vvod.charAt(i)</span><span class="s0">;</span>
+            <span class="s0">if </span><span class="s1">( symbol[i] == </span><span class="s2">'+'</span><span class="s1">){</span>
+                <span class="s1">oper = </span><span class="s2">'+'</span><span class="s0">; </span><span class="s1">operStr = </span><span class="s2">&quot;</span><span class="s0">\\</span><span class="s2">+&quot;</span><span class="s0">;</span>
+            <span class="s1">}</span>
+            <span class="s0">if </span><span class="s1">( symbol[i] == </span><span class="s2">'-'</span><span class="s1">){</span>
+                <span class="s1">oper = </span><span class="s2">'-'</span><span class="s0">; </span><span class="s1">operStr = </span><span class="s2">&quot;-&quot;</span><span class="s0">;</span>
+            <span class="s1">}</span>
+            <span class="s0">if </span><span class="s1">( symbol[i] == </span><span class="s2">'*'</span><span class="s1">){</span>
+                <span class="s1">oper = </span><span class="s2">'*'</span><span class="s0">; </span><span class="s1">operStr = </span><span class="s2">&quot;</span><span class="s0">\\</span><span class="s2">*&quot;</span><span class="s0">;</span>
+            <span class="s1">}</span>
+            <span class="s0">if </span><span class="s1">( symbol[i] == </span><span class="s2">'/'</span><span class="s1">){</span>
+                <span class="s1">oper = </span><span class="s2">'/'</span><span class="s0">; </span><span class="s1">operStr = </span><span class="s2">&quot;/&quot;</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s0">int </span><span class="s1">num1 = </span><span class="s3">0</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">num2 = </span><span class="s3">0</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">result = </span><span class="s3">0</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">resultArab = </span><span class="s3">0</span><span class="s0">;</span>
+        <span class="s1">String[] numbers = vvod.split(operStr)</span><span class="s0">;</span>
+        <span class="s0">if </span><span class="s1">(numbers.length &gt; </span><span class="s3">2</span><span class="s1">) {</span>
+            <span class="s1">System.out.println(</span><span class="s2">&quot; throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">System.exit(</span><span class="s3">0</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s1">num1 = romanNumeral(numbers[</span><span class="s3">0</span><span class="s1">])</span><span class="s0">;</span>
+        <span class="s1">num2 = romanNumeral(numbers[</span><span class="s3">1</span><span class="s1">])</span><span class="s0">;</span>
+        <span class="s0">if </span><span class="s1">(num1 == </span><span class="s3">0 </span><span class="s1">| num2 == </span><span class="s3">0</span><span class="s1">) {</span>
+            <span class="s1">result = </span><span class="s3">0</span><span class="s0">;</span>
+            <span class="s0">try </span><span class="s1">{</span>
+                <span class="s1">num1 = Integer.parseInt(numbers[</span><span class="s3">0</span><span class="s1">])</span><span class="s0">;</span>
+                <span class="s1">num2 = Integer.parseInt(numbers[</span><span class="s3">1</span><span class="s1">])</span><span class="s0">;</span>
+                <span class="s0">if </span><span class="s1">(num1 &gt; </span><span class="s3">10 </span><span class="s1">| num2 &gt; </span><span class="s3">10 </span><span class="s1">| num1 &lt; </span><span class="s3">0 </span><span class="s1">| num2 &lt;</span><span class="s3">0</span><span class="s1">) {</span>
+                    <span class="s1">System.out.println(</span><span class="s2">&quot; throws Exception //т.е. калькулятор умеет работать только с целыми арабскими или римскими цифрами от 1 до 10 одновременно.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">System.exit(</span><span class="s3">0</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">}</span>
+                <span class="s1">resultArab = calculate(num1</span><span class="s0">, </span><span class="s1">num2</span><span class="s0">, </span><span class="s1">oper)</span><span class="s0">;</span>
+                <span class="s1">System.out.println(</span><span class="s2">&quot; &quot; </span><span class="s1">+ resultArab)</span><span class="s0">;</span>
+            <span class="s1">} </span><span class="s0">catch </span><span class="s1">(NumberFormatException e) {</span>
+                <span class="s1">System.out.println(</span><span class="s2">&quot; throws Exception //т.к. калькулятор умеет работать только с целыми арабскими или римскими цифрами от 1 до 10 одновременно.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">} </span><span class="s0">catch </span><span class="s1">(ArithmeticException e) {</span>
+                <span class="s1">System.out.println(</span><span class="s2">&quot; throws Exception // т.к. На ноль делить нельзя.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s0">try </span><span class="s1">{</span>
+                <span class="s1">result = calculate(num1</span><span class="s0">, </span><span class="s1">num2</span><span class="s0">, </span><span class="s1">oper)</span><span class="s0">;</span>
+                <span class="s1">String resultRom = romanSolution(result)</span><span class="s0">;</span>
+                <span class="s1">System.out.println(</span><span class="s2">&quot;=&quot; </span><span class="s1">+ resultRom + </span><span class="s2">&quot; (&quot; </span><span class="s1">+ result + </span><span class="s2">&quot;)&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">} </span><span class="s0">catch </span><span class="s1">(ArrayIndexOutOfBoundsException e) {</span>
+                <span class="s1">System.out.println(</span><span class="s2">&quot; throws Exception // т.к. результатом работы калькулятора с римскими числами могут быть только положительные числа.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public static int </span><span class="s1">calculate(</span><span class="s0">int </span><span class="s1">x1</span><span class="s0">, int </span><span class="s1">x2</span><span class="s0">, char </span><span class="s1">op) {</span>
+        <span class="s0">int </span><span class="s1">result = </span><span class="s3">0</span><span class="s0">;</span>
+        <span class="s0">switch </span><span class="s1">(op) {</span>
+            <span class="s0">case </span><span class="s2">'+'</span><span class="s1">:</span>
+                <span class="s1">result = x1 + x2</span><span class="s0">;</span>
+                <span class="s0">break;</span>
+            <span class="s0">case </span><span class="s2">'-'</span><span class="s1">:</span>
+                <span class="s1">result = x1 - x2</span><span class="s0">;</span>
+                <span class="s0">break;</span>
+            <span class="s0">case </span><span class="s2">'*'</span><span class="s1">:</span>
+                <span class="s1">result = x1 * x2</span><span class="s0">;</span>
+                <span class="s0">break;</span>
+            <span class="s0">case </span><span class="s2">'/'</span><span class="s1">:</span>
+                <span class="s1">result = x1 / x2</span><span class="s0">;</span>
+                <span class="s0">break;</span>
+            <span class="s0">default</span><span class="s1">:</span>
+                <span class="s0">break;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s1">result</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public static int </span><span class="s1">romanNumeral(String roman) {</span>
+        <span class="s0">if </span><span class="s1">(roman.equals(</span><span class="s2">&quot;I&quot;</span><span class="s1">)) {</span>
+            <span class="s0">return </span><span class="s3">1</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">else if </span><span class="s1">(roman.equals(</span><span class="s2">&quot;II&quot;</span><span class="s1">)) {</span>
+            <span class="s0">return </span><span class="s3">2</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">else if </span><span class="s1">(roman.equals(</span><span class="s2">&quot;III&quot;</span><span class="s1">)) {</span>
+            <span class="s0">return </span><span class="s3">3</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">else if </span><span class="s1">(roman.equals(</span><span class="s2">&quot;IV&quot;</span><span class="s1">)) {</span>
+            <span class="s0">return </span><span class="s3">4</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">else if </span><span class="s1">(roman.equals(</span><span class="s2">&quot;V&quot;</span><span class="s1">)) {</span>
+            <span class="s0">return </span><span class="s3">5</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">else if </span><span class="s1">(roman.equals(</span><span class="s2">&quot;VI&quot;</span><span class="s1">)) {</span>
+            <span class="s0">return </span><span class="s3">6</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">else if </span><span class="s1">(roman.equals(</span><span class="s2">&quot;VII&quot;</span><span class="s1">)) {</span>
+            <span class="s0">return </span><span class="s3">7</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">else if </span><span class="s1">(roman.equals(</span><span class="s2">&quot;VIII&quot;</span><span class="s1">)) {</span>
+            <span class="s0">return </span><span class="s3">8</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">else if </span><span class="s1">(roman.equals(</span><span class="s2">&quot;IX&quot;</span><span class="s1">)) {</span>
+            <span class="s0">return </span><span class="s3">9</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">else if </span><span class="s1">(roman.equals(</span><span class="s2">&quot;X&quot;</span><span class="s1">)) {</span>
+            <span class="s0">return </span><span class="s3">10</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s0">return </span><span class="s3">0</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public static </span><span class="s1">String romanSolution(</span><span class="s0">int </span><span class="s1">arabNumeral) {</span>
+        <span class="s1">String[] romanAll = {</span><span class="s2">&quot;O&quot;</span><span class="s0">, </span><span class="s2">&quot;I&quot;</span><span class="s0">, </span><span class="s2">&quot;II&quot;</span><span class="s0">, </span><span class="s2">&quot;III&quot;</span><span class="s0">, </span><span class="s2">&quot;IV&quot;</span><span class="s0">, </span><span class="s2">&quot;V&quot;</span><span class="s0">, </span><span class="s2">&quot;VI&quot;</span><span class="s0">, </span><span class="s2">&quot;VII&quot;</span><span class="s0">, </span><span class="s2">&quot;VIII&quot;</span><span class="s0">, </span><span class="s2">&quot;IX&quot;</span><span class="s0">, </span><span class="s2">&quot;X&quot;</span><span class="s0">,</span>
+                <span class="s2">&quot;XI&quot;</span><span class="s0">, </span><span class="s2">&quot;XII&quot;</span><span class="s0">, </span><span class="s2">&quot;XIII&quot;</span><span class="s0">, </span><span class="s2">&quot;XIV&quot;</span><span class="s0">, </span><span class="s2">&quot;XV&quot;</span><span class="s0">, </span><span class="s2">&quot;XVI&quot;</span><span class="s0">, </span><span class="s2">&quot;XVII&quot;</span><span class="s0">, </span><span class="s2">&quot;XVIII&quot;</span><span class="s0">, </span><span class="s2">&quot;XIX&quot;</span><span class="s0">, </span><span class="s2">&quot;XX&quot;</span><span class="s0">,</span>
+                <span class="s2">&quot;XXI&quot;</span><span class="s0">, </span><span class="s2">&quot;XXII&quot;</span><span class="s0">, </span><span class="s2">&quot;XXIII&quot;</span><span class="s0">, </span><span class="s2">&quot;XXIV&quot;</span><span class="s0">, </span><span class="s2">&quot;XXV&quot;</span><span class="s0">, </span><span class="s2">&quot;XXVI&quot;</span><span class="s0">, </span><span class="s2">&quot;XXVII&quot;</span><span class="s0">, </span><span class="s2">&quot;XXVIII&quot;</span><span class="s0">, </span><span class="s2">&quot;XXIX&quot;</span><span class="s0">,</span>
+                <span class="s2">&quot;*****&quot;</span><span class="s0">, </span><span class="s2">&quot;XXXI&quot;</span><span class="s0">, </span><span class="s2">&quot;XXXII&quot;</span><span class="s0">, </span><span class="s2">&quot;XXXIII&quot;</span><span class="s0">, </span><span class="s2">&quot;XXXIV&quot;</span><span class="s0">, </span><span class="s2">&quot;XXXV&quot;</span><span class="s0">, </span><span class="s2">&quot;XXXVI&quot;</span><span class="s0">, </span><span class="s2">&quot;XXXVII&quot;</span><span class="s0">, </span><span class="s2">&quot;XXXVIII&quot;</span><span class="s0">,</span>
+                <span class="s2">&quot;XXXIX&quot;</span><span class="s0">, </span><span class="s2">&quot;XL&quot;</span><span class="s0">, </span><span class="s2">&quot;XLI&quot;</span><span class="s0">, </span><span class="s2">&quot;XLII&quot;</span><span class="s0">, </span><span class="s2">&quot;XLIII&quot;</span><span class="s0">, </span><span class="s2">&quot;XLIV&quot;</span><span class="s0">, </span><span class="s2">&quot;XLV&quot;</span><span class="s0">, </span><span class="s2">&quot;XLVI&quot;</span><span class="s0">, </span><span class="s2">&quot;XLVII&quot;</span><span class="s0">, </span><span class="s2">&quot;XLVIII&quot;</span><span class="s0">,</span>
+                <span class="s2">&quot;XLIX&quot;</span><span class="s0">, </span><span class="s2">&quot;L&quot;</span><span class="s0">, </span><span class="s2">&quot;LI&quot;</span><span class="s0">, </span><span class="s2">&quot;LII&quot;</span><span class="s0">, </span><span class="s2">&quot;LIII&quot;</span><span class="s0">, </span><span class="s2">&quot;LIV&quot;</span><span class="s0">, </span><span class="s2">&quot;LV&quot;</span><span class="s0">, </span><span class="s2">&quot;LVI&quot;</span><span class="s0">, </span><span class="s2">&quot;LVII&quot;</span><span class="s0">, </span><span class="s2">&quot;LVIII&quot;</span><span class="s0">, </span><span class="s2">&quot;LIX&quot;</span><span class="s0">, </span><span class="s2">&quot;LX&quot;</span><span class="s0">,</span>
+                <span class="s2">&quot;LXI&quot;</span><span class="s0">, </span><span class="s2">&quot;LXII&quot;</span><span class="s0">, </span><span class="s2">&quot;LXIII&quot;</span><span class="s0">, </span><span class="s2">&quot;LXIV&quot;</span><span class="s0">, </span><span class="s2">&quot;LXV&quot;</span><span class="s0">, </span><span class="s2">&quot;LXVI&quot;</span><span class="s0">, </span><span class="s2">&quot;LXVII&quot;</span><span class="s0">, </span><span class="s2">&quot;LXVIII&quot;</span><span class="s0">, </span><span class="s2">&quot;LXIX&quot;</span><span class="s0">, </span><span class="s2">&quot;LXX&quot;</span><span class="s0">,</span>
+                <span class="s2">&quot;LXXI&quot;</span><span class="s0">, </span><span class="s2">&quot;LXXII&quot;</span><span class="s0">, </span><span class="s2">&quot;LXXIII&quot;</span><span class="s0">, </span><span class="s2">&quot;LXXIV&quot;</span><span class="s0">, </span><span class="s2">&quot;LXXV&quot;</span><span class="s0">, </span><span class="s2">&quot;LXXVI&quot;</span><span class="s0">, </span><span class="s2">&quot;LXXVII&quot;</span><span class="s0">, </span><span class="s2">&quot;LXXVIII&quot;</span><span class="s0">, </span><span class="s2">&quot;LXXIX&quot;</span><span class="s0">,</span>
+                <span class="s2">&quot;LXXX&quot;</span><span class="s0">, </span><span class="s2">&quot;LXXXI&quot;</span><span class="s0">, </span><span class="s2">&quot;LXXXII&quot;</span><span class="s0">, </span><span class="s2">&quot;LXXXIII&quot;</span><span class="s0">, </span><span class="s2">&quot;LXXXIV&quot;</span><span class="s0">, </span><span class="s2">&quot;LXXXV&quot;</span><span class="s0">, </span><span class="s2">&quot;LXXXVI&quot;</span><span class="s0">, </span><span class="s2">&quot;LXXXVII&quot;</span><span class="s0">, </span><span class="s2">&quot;LXXXVIII&quot;</span><span class="s0">,</span>
+                <span class="s2">&quot;LXXXIX&quot;</span><span class="s0">, </span><span class="s2">&quot;XC&quot;</span><span class="s0">, </span><span class="s2">&quot;XCI&quot;</span><span class="s0">, </span><span class="s2">&quot;XCII&quot;</span><span class="s0">, </span><span class="s2">&quot;XCIII&quot;</span><span class="s0">, </span><span class="s2">&quot;XCIV&quot;</span><span class="s0">, </span><span class="s2">&quot;XCV&quot;</span><span class="s0">, </span><span class="s2">&quot;XCVI&quot;</span><span class="s0">, </span><span class="s2">&quot;XCVII&quot;</span><span class="s0">, </span><span class="s2">&quot;XCVIII&quot;</span><span class="s0">, </span><span class="s2">&quot;XCIX&quot;</span><span class="s0">, </span><span class="s2">&quot;C&quot;</span>
+        <span class="s1">}</span><span class="s0">;</span>
+        <span class="s1">String q = romanAll[arabNumeral]</span><span class="s0">;</span>
+        <span class="s0">return </span><span class="s1">q</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+
+</pre>
+</body>
+</html>
